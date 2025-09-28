@@ -11,7 +11,12 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET = process.env.JWT_SECRET || 'your_super_secret_jwt_key_here_make_it_very_long_and_secure_123456789';
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: "https://auth-fronend.onrender.com",  // allowed frontend
+  methods: ["GET", "POST", "PUT", "DELETE"], // optional
+  credentials: true                  // optional, if you use cookies/sessions
+}));
+
 app.use(express.json());
 
 // MongoDB Connection
